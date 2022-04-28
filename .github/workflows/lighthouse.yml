@@ -84,18 +84,20 @@ jobs:
           json: ${{ steps.lighthouse_audit.outputs.manifest.summary }}
           dir: './.github/workflows'
 
+      # - name: Commit
+      #   uses: stefanzweifel/git-auto-commit-action@v4
+      #   env:
+      #     GITHUB_TOKEN: ${{ github.token }}
+      #   with:
+      #     commit_message: Add updated lighthouse results file
+      
       - name: Commit
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: EndBug/add-and-commit@v9
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
-          commit_message: Add updated lighthouse results file
-      
-      # - name: Commit
-      #   uses: EndBug/add-and-commit@v9
-      #   with:
-      #     add: './.github/workflows/lighthouse-latest.json'
-      #     GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+          add: './.github/workflows/lighthouse-latest.json'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
       # - run: echo  ${{ steps.lighthouse_audit.outputs.manifest.summary }} > lighthouse-latest.json
