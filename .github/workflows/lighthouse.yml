@@ -83,7 +83,7 @@ jobs:
           dir: '/'
       
       - name: Commit
-        uses: EndBug/add-and-commit@v
+        uses: EndBug/add-and-commit@v9
         with:
           add: './.github/workflows/lighthouse-latest.json'
           github_token: ${{ secrets.GH_ACCESS_TOKEN }}
