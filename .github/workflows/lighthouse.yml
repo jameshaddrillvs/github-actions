@@ -62,7 +62,7 @@ jobs:
               links: ${{ steps.lighthouse_audit.outputs.links }}
             };
 
-            const comment = lighthouseCommentMaker({ lighthouseOutputs, lighthouseLatest });
+            const comment = lighthouseCommentMaker({ lighthouseOutputs });
             core.setOutput("comment", comment);
 
       - name: Add Lighthouse stats as comment
