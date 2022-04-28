@@ -14,6 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
       
       - name: Set up node 
         uses: actions/setup-node@v1
@@ -86,8 +89,6 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           add: './.github/workflows/lighthouse-latest.json'
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.ref }}
           GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
 
 
