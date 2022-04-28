@@ -62,7 +62,7 @@ jobs:
               links: ${{ steps.lighthouse_audit.outputs.links }}
             };
 
-            const comment = lighthouseCommentMaker({ lighthouseOutputs });
+            const comment = lighthouseCommentMaker({ lighthouseOutputs, lighthouseLatest });
             core.setOutput("comment", comment);
 
       - name: Add Lighthouse stats as comment
@@ -74,13 +74,13 @@ jobs:
           header: lighthouse
           message: ${{ steps.format_lighthouse_score.outputs.comment }}
 
-      - run: echo  ${{ steps.lighthouse_audit.outputs.manifest }} > lighthouse-latest.json
+      - run: echo  ${{ steps.lighthouse_audit.outputs }} > lighthouse-latest.txt
 
       - name: Upload latest lighthouse results
         uses: actions/upload-artifact@v3
         with:
           name: lighthouse-latest
-          path: lighthouse-latest.json
+          path: lighthouse-latest.txt
 
   # print-results:
   #     - name: Download lighthouse artifact
