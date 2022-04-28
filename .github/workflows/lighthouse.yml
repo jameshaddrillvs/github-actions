@@ -10,7 +10,7 @@ on:
       - main
   workflow_dispatch:
 jobs:
-  static-dist-dir:
+  create-env:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -80,7 +80,7 @@ jobs:
         with:
           name: "lighthouse-latest.json"
           json: ${{ steps.lighthouse_audit.outputs.manifest.summary }}
-          dir: '/'
+          dir: './.github/workflows'
       
       - name: Commit
         uses: EndBug/add-and-commit@v9
