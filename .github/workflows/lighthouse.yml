@@ -44,14 +44,34 @@ jobs:
           uploadArtifacts: true # save results as an action artifacts
           temporaryPublicStorage: true # upload lighthouse report to the temporary storage
 
-      - name: Create Pull Request comment
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GH_ACCESS_TOKEN }}
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '👋 Thanks for reporting!'
-            })
+        - shell: bash
+          run: |
+            manifest.jsonPath > lighthouse-json.txt
+
+        - name: Upload math result for job 1
+          uses: actions/upload-artifact@v3
+          with:
+            name: lighthouse-json
+            path: lighthouse-json.txt
+
+  # print-results:
+  #     - name: Download lighthouse artifact
+  #       uses: actions/download-artifact@v3
+  #       with:
+  #         name: lighthouse-results
+
+  #     - shell: bash
+  #       run: |
+  #         value=`cat lhr-*.json`
+
+  #     - name: Create Pull Request comment
+  #       uses: actions/github-script@v6
+  #       with:
+  #         github-token: ${{ secrets.GH_ACCESS_TOKEN }}
+  #         script: |
+  #           github.rest.issues.createComment({
+  #             issue_number: context.issue.number,
+  #             owner: context.repo.owner,
+  #             repo: context.repo.repo,
+  #             body: '👋 Thanks for reporting!'
+  #           })
