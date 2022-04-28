@@ -74,25 +74,28 @@ jobs:
           header: lighthouse
           message: ${{ steps.format_lighthouse_score.outputs.comment }}
 
-      - name: create-json
+      - name: Create latest results json
         id: create-json
         uses: jsdaniell/create-json@1.1.2
         with:
           name: "lighthouse-latest.json"
           json: ${{ steps.lighthouse_audit.outputs.manifest.summary }}
           dir: '/'
-          script: |
-            const log = require('./.github/workflows/lighthouse-latest.json');
+      
+      - name: Commit
+        uses: EndBug/add-and-commit@v
+        with:
+          add: './.github/workflows/lighthouse-latest.json'
+          github_token: ${{ secrets.GH_ACCESS_TOKEN }}
 
-            console.log(log);
 
       # - run: echo  ${{ steps.lighthouse_audit.outputs.manifest.summary }} > lighthouse-latest.json
 
-      - name: Upload latest lighthouse results
-        uses: actions/upload-artifact@v3
-        with:
-          name: lighthouse-latest
-          path: lighthouse-latest.json
+      # - name: Upload latest lighthouse results
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: lighthouse-latest
+      #     path: lighthouse-latest.json
 
   # print-results:
   #     - name: Download lighthouse artifact
