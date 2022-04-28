@@ -74,15 +74,13 @@ jobs:
           header: lighthouse
           message: ${{ steps.format_lighthouse_score.outputs.comment }}
 
-      - shell: bash
-        run: |
-          ${{ steps.lighthouse_audit.outputs.manifest }} > lighthouse-latest.txt
+      - run: echo  ${{ steps.lighthouse_audit.outputs.manifest }} > lighthouse-latest.json
 
       - name: Upload latest lighthouse results
         uses: actions/upload-artifact@v3
         with:
           name: lighthouse-latest
-          path: lighthouse-latest.txt
+          path: lighthouse-latest.json
 
   # print-results:
   #     - name: Download lighthouse artifact
