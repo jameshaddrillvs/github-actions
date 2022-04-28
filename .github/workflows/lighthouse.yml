@@ -80,6 +80,11 @@ jobs:
         with:
           name: "lighthouse-latest.json"
           json: ${{ steps.lighthouse_audit.outputs.manifest.summary }}
+          dir: '/'
+          script: |
+            const log = require('./.github/workflows/lighthouse-latest.json');
+
+            console.log(log);
 
       # - run: echo  ${{ steps.lighthouse_audit.outputs.manifest.summary }} > lighthouse-latest.json
 
