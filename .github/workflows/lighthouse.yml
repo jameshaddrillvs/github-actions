@@ -87,6 +87,7 @@ jobs:
       - name: Commit
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           commit_message: Add updated lighthouse results file
       
       # - name: Commit
