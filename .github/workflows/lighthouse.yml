@@ -86,7 +86,9 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           add: './.github/workflows/lighthouse-latest.json'
-          github_token: ${{ secrets.GH_ACCESS_TOKEN }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
 
 
       # - run: echo  ${{ steps.lighthouse_audit.outputs.manifest.summary }} > lighthouse-latest.json
