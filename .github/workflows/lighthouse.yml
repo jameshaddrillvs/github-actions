@@ -5,6 +5,9 @@ on:
       - main 
     types:
       - opened
+  push:
+    branches:
+      - main
   workflow_dispatch:
 jobs:
   static-dist-dir:
@@ -70,6 +73,16 @@ jobs:
           number: ${{ github.event.pull_request.number }}
           header: lighthouse
           message: ${{ steps.format_lighthouse_score.outputs.comment }}
+
+      - name: Create latest Lighthouse stats file
+          - shell: bash
+            run: |
+              ${{ steps.lighthouse_audit.outputs.manifest }} > lighthouse-latest.txt
+          - name: Upload latest lighthouse results
+            uses: actions/upload-artifact@v3
+            with:
+              name: lighthouse-latest
+              path: lighthouse-latest.txt
 
   # print-results:
   #     - name: Download lighthouse artifact
