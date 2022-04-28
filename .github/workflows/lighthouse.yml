@@ -75,8 +75,8 @@ jobs:
           message: ${{ steps.format_lighthouse_score.outputs.comment }}
 
       - shell: bash
-        run: |
-          ${{ steps.lighthouse_audit.outputs.manifest }} > lighthouse-latest.txt
+        # run: ${{ steps.lighthouse_audit.outputs.manifest }} > lighthouse-latest.txt
+        run: "this is just a test" > lighthouse-latest.txt
 
       - name: Upload latest lighthouse results
         uses: actions/upload-artifact@v3
