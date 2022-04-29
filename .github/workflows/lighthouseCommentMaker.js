@@ -24,8 +24,8 @@ We ran Lighthouse against the changes and produced this [report](${reportUrl}). 
 
 | Category | Score |
 | -------- | ----- |
-${scoreRow('Performance', summary.performance)} (prev ${prevScores[0].summary} )}
-${scoreRow('Accessibility', summary.accessibility)}
+${scoreRow('Performance', summary.performance)} (prev ${prevScores[0].summary.perfomance} )}
+${scoreRow('Accessibility', summary.accessibility)} (prev ${prevScores[0].summary.accessibility} )}
 ${scoreRow('Best practices', summary['best-practices'])}
 ${scoreRow('SEO', summary.seo)}
 ${scoreRow('PWA', summary.pwa)}
