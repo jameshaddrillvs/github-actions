@@ -1,5 +1,5 @@
 
-const prevScores = require('../../.lighthouseci/manifest.json');
+const prevScores = require('./.lighthouseci/manifest.json');
 const formatScore = (score) => Math.round(score * 100);
 const emojiScore = (score) =>
   score >= 0.9 ? '🟢' : score >= 0.5 ? '🟠' : '🔴';
