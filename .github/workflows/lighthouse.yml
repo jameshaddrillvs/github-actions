@@ -9,6 +9,7 @@ on:
     branches:
       - main
   workflow_dispatch:
+permissions: read-all|write-all
 jobs:
   create-env:
     runs-on: ubuntu-latest
@@ -85,12 +86,12 @@ jobs:
           json: ${{ steps.lighthouse_audit.outputs.manifest.summary }}
           dir: './.github/workflows'
 
-      # - name: Commit
-      #   uses: stefanzweifel/git-auto-commit-action@v4
-      #   env:
-      #     GITHUB_TOKEN: ${{ github.token }}
-      #   with:
-      #     commit_message: Add updated lighthouse results file
+      - name: Commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          commit_message: Add updated lighthouse results file
       
       # - name: Commit
       #   uses: EndBug/add-and-commit@v9
@@ -103,13 +104,13 @@ jobs:
 
       # - run: echo  ${{ steps.lighthouse_audit.outputs.manifest.summary }} > lighthouse-latest.json
 
-      - name: Commit latest lighthouse results
-        uses: actions/upload-artifact@v3
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        with:
-          name: lighthouse-latest
-          path: lighthouse-latest.json
+      # - name: Commit latest lighthouse results
+      #   uses: actions/upload-artifact@v3
+      #   env:
+      #     GITHUB_TOKEN: ${{ github.token }}
+      #   with:
+      #     name: lighthouse-latest
+      #     path: lighthouse-latest.json
 
   # print-results:
   #     - name: Download lighthouse artifact
