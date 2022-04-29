@@ -84,7 +84,7 @@ jobs:
         with:
           name: "lighthouse-latest.json"
           json: ${{ steps.lighthouse_audit.outputs.manifest.summary }}
-          dir: './lighthouse-results'
+          dir: './.github/lighthouse-results'
 
       - name: Commit
         uses: stefanzweifel/git-auto-commit-action@v4
