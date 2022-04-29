@@ -4,6 +4,8 @@ const formatScore = (score) => Math.round(score * 100);
 const emojiScore = (score) =>
   score >= 0.9 ? '🟢' : score >= 0.5 ? '🟠' : '🔴';
 
+console.log(prevScores);
+
 const scoreRow = (
   /** @type { string } */ label,
   /** @type { number } */ score
@@ -22,7 +24,7 @@ We ran Lighthouse against the changes and produced this [report](${reportUrl}). 
 
 | Category | Score |
 | -------- | ----- |
-${scoreRow('Performance', summary.performance)} (prev ${prevScores.summary.performace} )}
+${scoreRow('Performance', summary.performance)} (prev ${prevScores} )}
 ${scoreRow('Accessibility', summary.accessibility)}
 ${scoreRow('Best practices', summary['best-practices'])}
 ${scoreRow('SEO', summary.seo)}
