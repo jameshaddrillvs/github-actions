@@ -1,9 +1,9 @@
 [
   {
-    "url": "http://localhost:37481/index.html",
+    "url": "http://localhost:36095/index.html",
     "isRepresentativeRun": true,
-    "htmlPath": "/home/runner/work/github-actions/github-actions/.lighthouseci/localhost-_index_html-2022_04_29_08_56_19.report.html",
-    "jsonPath": "/home/runner/work/github-actions/github-actions/.lighthouseci/localhost-_index_html-2022_04_29_08_56_19.report.json",
+    "htmlPath": "/home/runner/work/github-actions/github-actions/.lighthouseci/localhost-_index_html-2022_04_29_08_58_08.report.html",
+    "jsonPath": "/home/runner/work/github-actions/github-actions/.lighthouseci/localhost-_index_html-2022_04_29_08_58_08.report.json",
     "summary": {
       "performance": 0.93,
       "accessibility": 0.91,
