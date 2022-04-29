@@ -92,22 +92,24 @@ jobs:
       #   with:
       #     commit_message: Add updated lighthouse results file
       
-      - name: Commit
-        uses: EndBug/add-and-commit@v9
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        with:
-          add: './.github/workflows/lighthouse-latest.json'
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Commit
+      #   uses: EndBug/add-and-commit@v9
+      #   env:
+      #     GITHUB_TOKEN: ${{ github.token }}
+      #   with:
+      #     add: './.github/workflows/lighthouse-latest.json'
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
       # - run: echo  ${{ steps.lighthouse_audit.outputs.manifest.summary }} > lighthouse-latest.json
 
-      # - name: Upload latest lighthouse results
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: lighthouse-latest
-      #     path: lighthouse-latest.json
+      - name: Commit latest lighthouse results
+        uses: actions/upload-artifact@v3
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          name: lighthouse-latest
+          path: lighthouse-latest.json
 
   # print-results:
   #     - name: Download lighthouse artifact
