@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Anothersgit change has happened again"/>
+    <HelloWorld msg="Deployment time!"/>
   </div>
 </template>
 
